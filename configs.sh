@@ -1,6 +1,4 @@
 #!/bin/bash
-# usage: ./create_ipa_users.sh
-# Создаёт 30 пользователей student1..student30, добавляет в группу 4course
 
 LOG_FILE="/var/log/ipa_user_creation.log"
 GROUP="4course"
