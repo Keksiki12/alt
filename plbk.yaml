@@ -1,0 +1,36 @@
+---
+- name: Mount Samba shares on clients
+  hosts: clients
+  become: true
+  vars:
+    samba_server: "192.168.10.10"
+    samba_user: "user1"
+    samba_pass: "P@ssw0rd"
+    shares:
+      - name: doc
+        mount: /mnt/doc
+      - name: share
+        mount: /mnt/share
+
+  tasks:
+    - name: Install cifs-utils
+      apt_rpm:
+        name: cifs-utils
+        state: present
+        update_cache: yes
+
+    - name: Create mount points
+      file:
+        path: "{{ item.mount }}"
+        state: directory
+        mode: '0755'
+      loop: "{{ shares }}"
+
+    - name: Mount shares via fstab
+      ansible.posix.mount:
+        path: "{{ item.mount }}"
+        src: "//{{ samba_server }}/{{ item.name }}"
+        fstype: cifs
+        opts: "username={{ samba_user }},password={{ samba_pass }},rw,_netdev,nofail"
+        state: mounted
+      loop: "{{ shares }}"
