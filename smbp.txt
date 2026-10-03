@@ -1,0 +1,18 @@
+[doc]
+    comment = Public Documents
+    path = /srv/samba/doc
+    browseable = yes
+    read only = no
+    guest ok = yes
+    create mask = 0666
+    directory mask = 0777
+
+[share]
+    comment = Restricted Share for user1 and user2
+    path = /srv/samba/share
+    browseable = yes
+    read only = no
+    guest ok = no
+    valid users = user1, user2
+    create mask = 0600
+    directory mask = 0700
