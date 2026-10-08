@@ -1,0 +1,23 @@
+option domain-name "au.team";
+option domain-name-servers 10.10.10.100;
+default-lease-time 600;
+max-lease-time 7200;
+authoritative;
+
+# Офис left — интерфейс ens19 (10.10.10.0/24)
+subnet 10.10.10.0 netmask 255.255.255.0 {
+    range 10.10.10.100 10.10.10.120;
+    option routers 10.10.10.1;
+}
+
+# Офис admin — интерфейс ens20 (20.20.20.0/24)
+subnet 20.20.20.0 netmask 255.255.255.0 {
+    range 20.20.20.150 20.20.20.200;
+    option routers 20.20.20.1;
+}
+
+# Резервирование IP для L-SRV
+host l-srv {
+    hardware ethernet <MAC-адрес L-SRV>;
+    fixed-address 10.10.10.100;
+}
