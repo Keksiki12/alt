@@ -1,0 +1,6 @@
+samba-tool group add left
+
+for i in $(seq 1 50); do
+    samba-tool user create user${i}.user1 'P@ssw0rd123'
+    samba-tool group addmembers left user${i}.user1
+done

@@ -1,0 +1,7 @@
+[sharesamba]
+    path = /mnt/sharesamba
+    browseable = yes
+    read only = no
+    valid users = @left @admin
+    create mask = 0770
+    directory mask = 0770

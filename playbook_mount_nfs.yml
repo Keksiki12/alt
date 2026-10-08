@@ -1,0 +1,17 @@
+---
+- hosts: cli
+  become: yes
+  tasks:
+    - name: Create mount point
+      file:
+        path: /mnt/share
+        state: directory
+        mode: '0755'
+
+    - name: Mount NFS share
+      mount:
+        path: /mnt/share
+        src: l-srv.au.team:/srv/nfsshare
+        fstype: nfs
+        opts: defaults
+        state: mounted

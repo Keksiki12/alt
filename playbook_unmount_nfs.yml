@@ -1,0 +1,13 @@
+---
+- hosts: cli
+  become: yes
+  tasks:
+    - name: Unmount NFS share
+      mount:
+        path: /mnt/share
+        state: unmounted
+
+    - name: Remove mount point
+      file:
+        path: /mnt/share
+        state: absent
