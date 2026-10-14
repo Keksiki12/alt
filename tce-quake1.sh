@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tce-load -wi Xorg-7.7-dev.tcz
+tce-load -wi Xorg-7.7-3d.tcz
 tce-load -wi compiletc
 tce-load -wi sdl2.tcz
 tce-load -wi SDL2-dev
