@@ -2,7 +2,7 @@
 
 tce-load -wi Xorg-7.7-3d.tcz
 tce-load -wi compiletc
-tce-load -wi sdl2.tcz
+tce-load -wi SDL2.tcz
 tce-load -wi SDL2-dev
 # tce-load -wi alsa.tcz
 # tce-load -wi alsa-modules-KERNEL.tcz
